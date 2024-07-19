@@ -10,5 +10,6 @@
 PROJECT: SQL project on creating Employment management system
 objective
 The objective of this project is to create student base that manage employee records, including personal details,Job positions,Departments.
-![Create a new SQL program - myCompiler - myCompiler - Google Chrome 7_19_2024 11_15_04 PM](https://github.com/user-attachments/assets/9a371251-bdc3-49c8-ae24-67ef2c186c75)
+![Create a new SQL program - myCompiler - myCompiler - Google Chrome 7_20_2024 12_47_06 AM](https://github.com/user-attachments/assets/c06e5a13-62ae-427f-8bbb-3bb6afc27fdf)
+
 
