@@ -1,0 +1,60 @@
+CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    DateOfBirth DATE,
+    Email VARCHAR(100),
+    PhoneNumber VARCHAR(15),
+    HireDate DATE,
+    JobPositionID INT,
+    DepartmentID INT,
+    FOREIGN KEY (JobPositionID) REFERENCES JobPositions(JobPositionID),
+    FOREIGN KEY (DepartmentID) REFERENCES Departments(DepartmentID)
+);
+CREATE TABLE Departments (
+    DepartmentID INT PRIMARY KEY,
+    DepartmentName VARCHAR(100),
+    DepartmentLocation VARCHAR(100)
+);
+CREATE TABLE JobPositions (
+    JobPositionID INT PRIMARY KEY,
+    JobTitle VARCHAR(100), 
+    JobDescription TEXT,
+    Salary DECIMAL(10, 2)
+);
+INSERT INTO Employees (EmployeeID, FirstName, LastName, DateOfBirth, Email, PhoneNumber, HireDate, JobPositionID, DepartmentID)
+VALUES (1, 'vamsi', 'krishna', '2004-01-25', 'vamsikrishna@gmail.com', '9121935908', '2024-01-24', 1, 1);
+VALUES (2, 'Bala', 'Krishna', '2007-05-12', 'balakrishna@gmail.com', '8309002797','2024-02-23', 2, 2);
+VALUES (3, 'Akhila', 'Joshi', '2004-11-19','akhilajoshi@gmail.com', '9121098990', '2024-03-26', 3, 3);
+VALUES (4, 'chethan', 'gajula','2003-05-21', 'chethangajula@gmail.com', '6302215753', '2024-04-38', 4, 4);
+INSERT INTO Departments (DepartmentID, DepartmentName, DepartmentLocation)
+VALUES 
+(1, 'software engineer', 'Delhi'),
+(2, 'Data scientist', 'Delhi'),
+(3, 'product manager', 'Mumbai'),
+(4, 'Marketing Specialist', 'Bangalore'),
+(5, 'HR manager', 'Hyderabad');
+INSERT INTO JobPositions (JobPositionID, JobTitle, JobDescription, Salary)
+VALUES 
+(1, 'Software Engineer', 'Develop and maintain software applications.', 90000.00),
+(2, 'Data Scientist', 'Analyze and interpret complex data to help companies make decisions.', 95000.00),
+(3, 'Product Manager', 'Oversee the development and delivery of products.', 105000.00),
+(4, 'Marketing Specialist', 'Create and execute marketing strategies.', 70000.00),
+(5, 'HR Manager', 'Manage recruitment, training, and employee relations.', 80000.00);
+SELECT E.EmployeeID, E.FirstName, E.LastName, J.JobTitle, D.DepartmentName
+FROM Employees E
+JOIN JobPositions J ON E.JobPositionID = J.JobPositionID
+JOIN Departments D ON E.DepartmentID = D.DepartmentID;
+SELECT E.EmployeeID, E.FirstName, E.LastName, D.DepartmentName
+FROM Employees E
+JOIN Departments D ON E.DepartmentID = D.DepartmentID
+WHERE D.DepartmentName = 'Software Engineering';
+SELECT E.EmployeeID, E.FirstName, E.LastName, J.JobTitle, D.DepartmentName
+FROM Employees E
+JOIN JobPositions J ON E.JobPositionID = J.JobPositionID
+JOIN Departments D ON E.DepartmentID = D.DepartmentID;
+SELECT J.JobPositionID, J.JobTitle, J.Salary, D.DepartmentName
+FROM JobPositions J
+JOIN Employees E ON J.JobPositionID = E.JobPositionID
+JOIN Departments D ON E.DepartmentID = D.DepartmentID
+WHERE D.DepartmentName = 'Data scientist';
